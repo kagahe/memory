@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 500px;
+    margin: 20px 0;
+    font-family: 'Jua', sans-serif;
+    font-size: 2rem;
+}
+
+.grid {
+    max-width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    position: relative;
+    transition: all .4s linear;
+    transform-style: preserve-3d;
+    margin: 5px;
+}
+
+.card,
+.back,
+.front {
+    height: 280px;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.back,
+.front {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    z-index: 2;
+    background: url('img/backsideofCard.png') no-repeat center center / contain;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.selected {
+    transform: rotateY(180deg);
+}
+
+.match .front {
+    background: transparent !important;
+}
+
+#choice {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.levels {
+    display: inline-block;
+    padding: 2%;
+    width: 20%;
+    color: brown;
+    border: 2px solid brown;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.levels:hover {
+    color: white;
+    border: 2px solid white;
+    background-color: brown;
+}
+
+@keyframes over {
+    0% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(0px, 30px);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+    75% {
+        transform: translate(0px, 30px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 0;
+        display: none;
+    }
+}
+
+.drop {
+    animation-name: over;
+    animation-duration: 4s;
+
+    animation-timing-function: linear;
+}
+
+.drop .back {
+    display: none;
+}
+
+.help {
+    display: inline-block;
+    padding: 2%;
+    text-align: center;
+    width: 100%;
+    background-color: brown;
+    border: 2px solid white;
+    margin-top: -20px;
+    color: white;
+}
